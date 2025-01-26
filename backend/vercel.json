@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "dist/**/*",
+      "src": "frontend/dist/**/*",
       "use": "@vercel/static"
     }
   ],
@@ -16,16 +16,12 @@
       "dest": "index.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/dist/$1"
-    },
-    {
-      "handle": "filesystem"
+      "src": "/static/(.*)",
+      "dest": "frontend/dist/static/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/dist/index.html"
+      "dest": "frontend/dist/index.html"
     }
   ]
 }
-
