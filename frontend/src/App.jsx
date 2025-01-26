@@ -1,12 +1,19 @@
-import React from 'react'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 const App = () => {
   return (
-    <div className='bg-gray-100 min-h-screen'>
-      <h1 className='font-bold text-center'>Hackathon</h1>
-      <p className='text-2xl font-semibold text-green-500'>checking its working or not after deployment or submition the task</p>
-    </div>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;

@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import connectDB from "./DB/db.js";
 import path from "path";
+import userRoute from "./routes/user.route.js";
+import loanRoute from "./routes/loan.route.js";
+import adminRoute from "./routes/admin.route.js";
 
 dotenv.config();
 
@@ -24,7 +27,12 @@ app.use(express.json());
 app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// routes
+// backend routes
+app.use("/api/v1/users", userRoute);
+app.use("/api/v1/loans", loanRoute);
+app.use("/api/v1/admin", adminRoute);
+
+// frontend routes
 app.use(express.static(path.join(__dirname, "frontend/dist")));
 app.get("*", (req, res) => {
   return res.sendFile(
